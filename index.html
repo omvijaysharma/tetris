@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Tetris Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+<!--======================================================================== open game -->
+
+    <div class="openGame">
+        <div class="higherDiv">
+            <p>Best ¦ </p>
+            <strong id="higher">0</strong>
+        </div>
+        <button id="startBtn" onclick="startGame()">
+            <p style="transform: rotate(90deg);"> Δ </p>
+            <p> ¦ </p>
+            <p> START </p>
+        </button>
+        <div class="settingDiv">
+            <button id="openSettingDivBtn" onclick="openSetting()"> < </button>
+            <button id="musicBtn"> m </button>
+            <button id="vibrationBtn"> v </button>
+            <button id="developerBtn" onclick="location.href='info.html'"> D </button>
+            <button id="closeSettingDivBtn" onclick="closeSetting()"> × </button>
+        </div>
+        
+        <div class="challengeDiv">
+            <p style="color: yellow;"> NEXT GOAL </p>
+            <div>
+                <p>level - 
+                    <strong id="challengeDivLevel">0</strong>
+                </p>
+            </div>
+            <div>
+                <p>scoro ¦ 
+                    <strong id="challengeDivLevelScoro">0</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+<!--======================================================================= audio game -->
+
+    <audio id="backgroundMusic">
+        <source src="plusPoint.wav" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+        
+            <!-- Audio File -->
+    <audio id="Music" loop>
+        <source src="backgroundMusic.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+<!--=================================================================== game container -->
+
+    <div class="game-container">
+        <div class="firstDiv">
+            
+            <!-- pause button-->
+            
+            <button id="pauseBtn" onclick="pauseGame()">
+                <img src="pause.png" alt="">
+            </button>
+            
+            <!-- level div-->
+            
+            <div class="levelDiv">
+                <strong id="level">0</strong>
+            </div>
+       
+            <!-- Next Piece Display -->
+            <div class="nextPieceDiv">
+               <p>NEXT</p>
+               <canvas id="next-piece" width="80" height="80"></canvas>
+            </div>
+        </div>
+        
+        <!-- main canvas-->
+        
+        <canvas id="tetris" width="260" height="460"></canvas>
+        
+        <!-- Control Buttons -->
+        <div class="controls">
+                    
+            <!-- drop -->
+            <!-- playerDrop() -->
+            <button id="dropBtn" onclick="playerRotate(1)">
+                <img src="rotate.png" alt="">
+                <div id="downCross">
+                    <p> < </p>
+                    <p> < </p>
+                </div>
+            </button>
+            
+            <!-- left -->
+            <button id="leftBtn" onclick="playerMove(-1)">
+                <p> < </p>
+            </button>
+            
+            <!-- right -->
+            <button id="rightBtn" onclick="playerMove(1)">
+                <p> > </p>
+            </button>
+        </div>
+     
+<!--======================================================================== pause div -->
+            
+        <div class="pauseBtnDiv">
+            <h2 id="pauseBtnDivH2"> game pause </h2>
+             <!-- home button -->
+            <button id="homeBtn" onclick="location.href='index.html'"> Home </button>      
+            <button id="continueBtn" onclick="pauseGame()"> 
+                <p style="transform: rotate(90deg);"> Δ </p>
+                <p>|</p>
+                <p> continue </p>
+            </button>
+            
+            <button id="restartBtn" onclick="restartGame()">Restart</button>
+            
+        </div> 
+        
+<!--============================================================================= joystick -->
+
+        <button class="joystick-container" onclick="playerRotate(1)">
+            
+            <div class="joystick-handle">
+            </div>
+            
+        </div>
+        
+    </button>
+         
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title> info page of game </title>
+    <style>
+        /* General Reset */
+
+* {
+    font-family: 'GamingFont', sans-serif;
+    /* text copy,select na ho website par */
+    /* For modern browsers */
+    user-select: none; 
+    /* For Safari */
+    -webkit-user-select: none; 
+    /* For Firefox */
+    -moz-user-select: none;
+    /* For Internet Explorer/Edge */
+    -ms-user-select: none; 
+    
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100vw; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #2b96ff;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+                      linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: moveTetris 2s linear infinite;
+}
+@keyframes moveTetris {
+    0% {background-position: 0 0;}
+    100% {background-position: -20px -20px;}
+}
+
+div {
+    border: 2px solid #fff;
+    border-radius: 20px;
+    padding: 20px;
+    width: 70vw;
+    background: rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* Image and Heading */
+.image-heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 0;
+    border-radius: 0px;
+    border: none; 
+    border-bottom: 2px solid white;
+    width: 100%;
+}
+
+.image-heading img {
+    width: 200px;
+    margin-right: 20px;
+}
+
+/* Button Styling */
+.btn-home {
+    font-size: 20px;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
+    border-radius: 15px;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+}
+
+/* Version Information */
+
+.version-info h4 {margin-bottom: 10px;}
+
+.version-info ul {list-style: none;}
+
+.version-info li {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.version-info li::before {
+    content: "• ";
+    color: white;
+    margin-right: 5px;
+}
+
+/* Credit Section */
+.credit {
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.credit img {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.credit button {
+    text-decoration: none;
+    text-align: left; 
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    border: 1px solid #fff;
+    margin: 3px;
+    width: 150px; 
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="image-heading">
+        <img src="om.png" alt="">
+        <h1>Hello Brother!</h1>
+    </div>
+
+<a onclick="home()" class="btn-home">Home</a>
+
+    <div class="version-info">
+        <h4>¤ Version 1.1</h4>
+        <ul>
+ <li> 13 × 23 grid </li>
+ <li> Add background. </li>
+ <li> Add best and present score. </li>
+ <li> Add Developer details. </li>
+ <li> Add sound effect when score changed. </li>
+ <li> Add style. </li>
+ <li> Add background music. </li>
+        </ul>
+    </div>
+    
+    <div class="credit">
+        <h3> Developer </h3>
+        </br>
+        <img src="om.png" alt="profile image on github">
+        </br>
+        <h4>om</h4>
+        <h6> Vijay Sharma </h6>
+        </br>
+        
+        <!-- github -->
+        <button onclick="github()"> 
+            <h5>GITHUB</h5> <p>@omvijaysharma</p>
+            </button>
+            
+        <!-- instagram -->
+        <button onclick="instagram()"> 
+            <h5>INSTAGRAM</h5> <p>@om.vijay.sharma</p>
+            </button>
+            
+    </div>
+    
+<script>
+    function home() {
+        if (document.referrer) {
+            // If there is a referrer (previous page), go back to it
+            window.history.back();
+        } else {
+            // If there's no previous page, redirect to index.html
+            window.location.href = 'index.html';
+        }
+    }
+
+    function instagram() {
+        copyToClipboard('https://www.instagram.com/om.vijay.sharma?igsh=YzljYTk1ODg3Zg==');
+    }
+
+    function github() {
+        copyToClipboard('https://github.com/omvijaysharma');
+    }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            showNotification('Copied to clipboard!');
+        }).catch(function(err) {
+            // Handle error silently or show a notification
+            showNotification('Failed to copy. Please try again.');
+        });
+    }
+
+    function showNotification(message) {
+        // Create a notification element
+        const notification = document.createElement('div');
+        notification.textContent = message;
+        notification.style.position = 'fixed';
+        notification.style.bottom = '10px';
+        notification.style.left = '50%';
+        notification.style.transform = 'translateX(-50%)';
+        notification.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Semi-transparent black
+        notification.style.color = '#fff';
+        notification.style.padding = '10px';
+        notification.style.borderRadius = '5px';
+        notification.style.zIndex = '1000';
+        document.body.appendChild(notification);
+
+        // Remove the notification after 3 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 1000);
+    }
+</script>
+</body>
+</html>

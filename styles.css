@@ -1,0 +1,288 @@
+@font-face {
+  font-family: 'GamingFont';
+  src: url('gaming_font.ttf')format('truetype');
+}
+
+* {
+    font-family: 'GamingFont', sans-serif;
+    /* text copy,select na ho website par */
+    /* For modern browsers */
+    user-select: none; 
+    /* For Safari */
+    -webkit-user-select: none; 
+    /* For Firefox */
+    -moz-user-select: none;
+    /* For Internet Explorer/Edge */
+    -ms-user-select: none; 
+    
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --bg-color: #2b96ff;
+    --tetris-bg-color: #222;
+    --btn-bg-color: #000;
+    --scoro-bg-color: #000;
+    --best-scoro-bg-color: #000;
+    --border: 1px solid #fff;
+}
+/* Full-screen animated background */
+/* Full-screen animated Tetris-style background */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    background: var(--bg-color);
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 1px, transparent 1px),
+                      linear-gradient(rgba(0, 0, 0, 0.2) 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: moveTetris 2s linear infinite;
+}
+@keyframes moveTetris {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -20px -20px;
+    }
+}
+.higherDiv {
+    background: var(--best-scoro-bg-color);
+    display: flex;
+    border: var(--border);
+    gap: 5px;
+    padding: 20px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+#startBtn {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    top: 60%;
+    left: 50%;    
+    transform: translate(-50%, -50%);
+    height: 80px;
+    width: 200px;
+    font-size: 15px;
+    border-radius: 20px;
+    border: var(--border);
+}
+#higher {color: red;}
+.challengeDiv {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--scoro-bg-color);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 50vw;
+    border-radius: 10px;
+    border: var(--border);
+    gap: 5px;
+}
+#challengeDivLevel,
+#challengeDivLevelScoro { color: red; }
+.settingDiv {
+    height: 50px;
+    width: auto;
+    position: fixed;
+    top: 70%;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border: var(--border);
+    display: flex;
+    flex-direction: row;
+}
+
+.settingDiv button {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+#openSettingDivBtn {display: flex;}
+#openSettingDivBtn,
+#closeSettingDivBtn {
+    height: 100%;
+    width: 30px;
+}
+.game-container {display: none;}
+.firstDiv {
+    width: 100vw;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#pauseBtn {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    border-radius: 50%;
+}
+#pauseBtn img {
+    height: 45px;
+    width: 45px;
+}
+.pauseBtnDiv {
+    background: rgba(0,0,0,0.5);
+    border: var(--border);
+    border-radius: 20px;
+    width: 75vw;
+    height: auto;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 3;
+    gap: 5px;
+    flex-direction: column;
+}
+#pauseBtnDivH2 {
+    margin: 20px 0;
+}
+.pauseBtnDiv button {
+    height: 50px;
+    width: 80%;
+    border: var(--border);
+}
+.levelDiv {
+    height: 20px;
+    width: 100px;
+    padding: 10px;
+    font-size: 20px;
+    display: flex;
+    background: var(--scoro-bg-color);
+    border: var(--border);
+}
+.nextPieceDiv {
+    height: 40px;
+    width: 40px;
+    top: 20px;
+    right: 20px;
+    padding: 0 10px;
+    border: var(--border);
+    padding-bottom: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #1A1A40;
+}
+.nextPieceDiv p {
+    font-size: 10px;
+    margin: 5px 0;
+}
+#next-piece {
+    height: 40px;
+    width: 40px;
+    top: 20px;
+    right: 20px;
+}
+#tetris {
+    position: fixed;
+    width: 280px;
+    height: auto;
+    transform: translate(-50%, 50%);
+    bottom: 50%;
+    left: 50%;
+    border: var(--border);
+}
+#tetris {
+    background: var(--tetris-bg-color);
+}
+button { 
+    background: var(--btn-bg-color);
+    font-size: 18px;
+    z-index: 2;
+    border: none;
+    padding: 10px 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: flex;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    gap: 5px;
+    flex-direction: row;
+}
+
+button img {
+    height: 20px;
+    width: 20px;
+    margin: 0 auto;
+}
+#pauseBtn:active {
+    transform: scale(0.50);
+}
+
+#leftBtn,
+#rightBtn {
+    position: fixed;
+    height: 70vh;
+    width: 20vw;
+    pointer-events: auto;
+    bottom: 100px;
+    display: none;
+}
+#leftBtn { left: 0;}
+#rightBtn { right: 0;}
+
+.controls button {
+    background: transparent;
+}
+#leftBtn:active,
+#rightBtn:active {
+    background: rgba(0,0,0,0.5);
+}
+#dropBtn {
+    position: fixed;
+    width: 270px;
+    height: 472px;
+    transform: translate(-50%, 50%);
+    bottom: 50%;
+    left: 50%;
+    opacity: 0;
+    display: none;
+    flex-direction: column;
+}
+#dropBtn:active {
+    opacity: 1;
+}
+#dropBtn p {
+    transform: rotate(-90deg);
+    font-size: 30px;
+}
+#downCross {
+    display: none;
+    flex-direction: column;
+}
+.joystick-container { 
+    width: 270px;
+    height: 472px;
+    background-color: transparent;
+    position: fixed;
+    transform: translate(-50%, 50%);
+    bottom: 50%;
+    left: 50%;
+    touch-action: none;
+}
+
+.joystick-handle {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    transform: translate(50%, 50%);
+}
